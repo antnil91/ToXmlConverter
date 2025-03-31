@@ -25,15 +25,15 @@ public class Application {
     
     public static void main(String[] args) throws FileNotFoundException, IOException, URISyntaxException {
         
-        
+        /*
         String fileIn="C:/Develop/ToXmlConverter/data/in_2.txt";
         String fileOu="c:/Develop/ToXmlConverter/data/out.xml";
 
         FileConverterService service = new FileConverterService(FileFormat.XML);
         service.convert(fileIn, fileOu); 
-
+        */
          
-        //ui();
+        ui();
         
         
     }
