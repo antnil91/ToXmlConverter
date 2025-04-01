@@ -16,6 +16,7 @@ import java.util.HashSet;
 import java.util.Map;
 import static toxmlconverter.FileFormat.JSON;
 import static toxmlconverter.FileFormat.XML;
+import toxmlconverter.Nodes.Node;
 
 /**
  *
@@ -68,13 +69,13 @@ public class NodeFactory {
         String[] childNames = colIndexToNameMapper.get(nodeIndex);
         HashSet<String> appendableIndexes = appendableIndexexMapper.get(nodeIndex);
 
-        INode node = nodeBuilder.setName(nodeName).setAppendableIndexes(appendableIndexes).setParent(parent).build();
+        Node node = nodeBuilder.setName(nodeName).setAppendableIndexes(appendableIndexes).setParent(parent).build();
            
         for(int i=0; i < cols.length; i++) {
             
             NodeBuilder childBuiler = getNodeBuilder(outputFormat);
             
-            INode child = childBuiler.setName(childNames[i]).setValue(cols[i]).setParent(node).setNodeIndex(nodeIndex).build();
+            Node child = childBuiler.setName(childNames[i]).setValue(cols[i]).setParent(node).setNodeIndex(nodeIndex).build();
             
             node.appendChild(child);
 

@@ -7,6 +7,7 @@ package toxmlconverter.Builders;
 import toxmlconverter.Builders.NodeBuilder;
 import toxmlconverter.Nodes.JsonNode;
 import toxmlconverter.Nodes.INode;
+import toxmlconverter.Nodes.Node;
 
 /**
  *
@@ -15,9 +16,9 @@ import toxmlconverter.Nodes.INode;
 public class JsonNodeBuilder extends NodeBuilder{
 
     @Override
-    public INode build() {
+    public Node build() {
                
-        INode jsonNode= new JsonNode(this);
+        Node jsonNode= new JsonNode(this);
         
         this.reset();
 

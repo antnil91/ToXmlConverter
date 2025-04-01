@@ -43,7 +43,7 @@ public class XmlElement extends Node {
 
     
     @Override
-    public void closeNode(BufferedWriter bw) {
+    public void writeCloseNode(BufferedWriter bw) {
         try {
             bw.write(String.format("</%s>", this.getNodeName()));
                   bw.flush();

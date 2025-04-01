@@ -72,17 +72,14 @@ public class JsonNode extends Node {
     }
 
     @Override
-    public void closeNode(BufferedWriter bw) {
+    public void writeCloseNode(BufferedWriter bw) {
         try {
             
       
-            //todo =  HANTERA  "," mellan nyckel-värde och början av nytt objekt. 
             if(this.getParent()== null){
                 bw.write("]");
             }  
             
-          
-                
 
             if(this.getValue().equals("")){
 
@@ -90,12 +87,6 @@ public class JsonNode extends Node {
 
             } 
             
-          
-     
-            
-       
-       
- 
         } catch (IOException ex) {
            ex.printStackTrace();
         }

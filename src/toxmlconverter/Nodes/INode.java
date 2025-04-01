@@ -13,14 +13,13 @@ import java.io.BufferedWriter;
 public interface INode {
     
     
-    public void writeOpenNode(BufferedWriter bw);
     
+    public void writeOpenNode(BufferedWriter bw); 
     public void writeValue(BufferedWriter bw);
-    
     public void writeChildren(BufferedWriter bw);
+    public void writeCloseNode(BufferedWriter bw);
     
-    public void closeNode(BufferedWriter bw);
-    
+
     public void appendChild(INode el);
     
     public boolean isValidChild(String elementIndex);  
@@ -28,12 +27,5 @@ public interface INode {
     public boolean hasChildren();
     
     public INode getParent();
-    
-    public String getNodeIndex();
-    
-    public void setOpen(BufferedWriter bw);
-    public void setClosed(BufferedWriter bw);
-    
-      public boolean isOpen();
-    
+      
 }

@@ -34,7 +34,7 @@ public class TestBigFILE {
         
         
         
-        for(int i = 0; i < 700000; i++){
+        for(int i = 0; i < 10000000; i++){
         
             bw.write(""+
             "P|Carl Gustaf|Bernadotte\n" +

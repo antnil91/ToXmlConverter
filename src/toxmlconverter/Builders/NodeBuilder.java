@@ -8,6 +8,7 @@ import toxmlconverter.Nodes.INode;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.Queue;
+import toxmlconverter.Nodes.Node;
 
 
 /**
@@ -69,7 +70,7 @@ public abstract class NodeBuilder {
             
         }
         
-        public NodeBuilder appendChild(INode el) {
+        public NodeBuilder appendChild(Node el) {
             
             this.children.add(el);
             return this;
@@ -94,7 +95,7 @@ public abstract class NodeBuilder {
         }
         
   
-        public abstract INode build();
+        public abstract Node build();
         
         public void reset(){
             

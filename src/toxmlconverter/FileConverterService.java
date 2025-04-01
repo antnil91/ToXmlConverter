@@ -49,9 +49,8 @@ public class FileConverterService {
         INode currNode = null;
         INode prevNode = parent;
         
-        parent.setOpen(bw);
+        parent.writeOpenNode(bw);
      
-
          while (br.ready()) {
             
             strLine = br.readLine();  //
@@ -69,35 +68,54 @@ public class FileConverterService {
                 parent = prevNode.getParent();
                 
                 while(!parent.isValidChild(nodeIndex)){
-                      parent = parent.getParent();
+                    
+                    parent = parent.getParent();
+                    
                 }
                 
                 
                 if(parent.getParent()==null){
-                        parent.setClosed(bw);
+                    
+                    parent.writeValue(bw);
+                    parent.writeChildren(bw);
+                    //parent.writeCloseNode(bw);
+                    
                 }
             
             }
             
-
+            
             currNode = NodeFactory.createNode(nodeIndex, children, this.outputFormat, parent);
 
             
             if(parent.isValidChild(nodeIndex)){
+                
                 parent.appendChild(currNode);
+                
             } 
             
-          
             prevNode = currNode;
             
-            bw.flush();
-            
         }
+         
+         
+         while(parent.getParent()!=null){
+             parent = parent.getParent();
+         }
+         
+       
+        parent.writeValue(bw);
+        parent.writeChildren(bw);
+        parent.writeCloseNode(bw);
+
+
+         
+         
         bw.flush();
         
         bw.close();
         br.close();
-        
+           
     }
     
 

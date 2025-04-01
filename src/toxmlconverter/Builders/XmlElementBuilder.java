@@ -5,6 +5,7 @@
 package toxmlconverter.Builders;
 
 import toxmlconverter.Nodes.INode;
+import toxmlconverter.Nodes.Node;
 import toxmlconverter.Nodes.XmlElement;
 
 /**
@@ -15,7 +16,7 @@ public class XmlElementBuilder extends NodeBuilder {
 
     
     @Override
-    public INode build() {
+    public Node build() {
         
         XmlElement el= new XmlElement(this);
         

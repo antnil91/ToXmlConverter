@@ -25,11 +25,8 @@ public abstract class Node implements INode{
     private String value="";
     private Queue<INode> children = new LinkedList();
     private HashSet<String> appendableIndexes = new HashSet();    
-    private boolean isOpen = false;
-    private String nodeIndex;
 
-
-    
+ 
     public Node(NodeBuilder builder){
         
         this.nodeName=builder.getNodeName();
@@ -37,14 +34,7 @@ public abstract class Node implements INode{
         this.appendableIndexes = builder.getAppendableIndexes();
         this.value = builder.getValue();
         this.parent = builder.getParent();
-        this.nodeIndex = builder.getNodeindex();
-  
-    }
-    
-    
- 
-    public String getNodeIndex(){
-        return this.nodeIndex;
+
     }
     
 
@@ -64,24 +54,7 @@ public abstract class Node implements INode{
         return this.parent;
     }
     
-    public boolean isOpen(){
-        return this.isOpen;
-    }
 
-
-
-    public void setOpen(BufferedWriter bw){
-        this.writeOpenNode(bw);
-        this.isOpen=true;
-    }
-     
-    
-    public void setClosed(BufferedWriter bw){
-         this.writeValue(bw);
-         this.writeChildren(bw);
-         this.closeNode(bw);
-         this.isOpen=false;
-    }
     
     @Override
     public void appendChild(INode el) {
@@ -111,7 +84,7 @@ public abstract class Node implements INode{
                 child.writeOpenNode(bw);
                 child.writeValue(bw);
                 child.writeChildren(bw);
-                child.closeNode(bw);
+                child.writeCloseNode(bw);
                 
             }
             
