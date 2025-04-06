@@ -1,0 +1,12 @@
+P|Carl Gustaf|Bernadotte
+A|Drottningholms slott|Stockholm|10001
+UAs|
+UA|Frankerike|Eifeltornet 44|Paris|1111
+UA|USA|Disneyworldgatan 4|Orlando|22222
+UA|Spaninen|PlayaDelSolgatan 11|Barcelona|1111
+F|Carl Philip|1979
+T|0768-101802|08-101802
+F|test test|1955
+A|Drottningholms slott|Stockholm|10001
+T|0768-101802|08-101802
+P|Barack|Obama

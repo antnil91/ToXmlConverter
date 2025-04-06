@@ -25,8 +25,9 @@ public class Application {
     
     public static void main(String[] args) throws FileNotFoundException, IOException, URISyntaxException {
         
+        
         /*
-        String fileIn="C:/Develop/ToXmlConverter/data/in_2.txt";
+        String fileIn="C:/Develop/ToXmlConverter/data/in.txt";
         String fileOu="c:/Develop/ToXmlConverter/data/out.xml";
 
         FileConverterService service = new FileConverterService(FileFormat.XML);
@@ -90,7 +91,7 @@ public class Application {
             
             
             FileConverterService service = new FileConverterService(fileFormat);
-            service.convert(defaultIn, defaultOut);
+            service.convert(defaultIn, defaultOut+"."+fileFormat.toString());
             
             
             System.out.println("Conversion completed!");
