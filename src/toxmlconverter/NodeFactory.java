@@ -35,6 +35,7 @@ public class NodeFactory {
         "T", "phone",
         "F", "family",
         
+        "UAs", "utlandsadresser",
         "UA", "utlandsadress"
           
     ));
@@ -46,6 +47,7 @@ public class NodeFactory {
         "A", new String[]{"gata", "stad", "postnummer"},
         "F", new String[]{"namn", "födelseår"},
         
+        "UAs", new String[0],
         "UA",new String[]{"Land", "gata", "stad","postnummer"}
            
     ));
@@ -55,7 +57,9 @@ public class NodeFactory {
             
         "P", new HashSet<>(Arrays.asList("T", "A", "F")),
         "F", new HashSet<>(Arrays.asList("T", "A")),
-        "A", new HashSet<>(Arrays.asList("UA"))
+        
+        "A", new HashSet<>(Arrays.asList("UAs", "UA")),
+        "UAs", new HashSet<>(Arrays.asList("UA"))
 
     ));
   

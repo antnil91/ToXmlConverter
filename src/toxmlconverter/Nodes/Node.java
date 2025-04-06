@@ -21,15 +21,18 @@ public abstract class Node implements INode{
     
     
     private INode parent = null;
+    private String nodeIndex="";
     private String nodeName="";
     private String value="";
     private Queue<INode> children = new LinkedList();
-    private HashSet<String> appendableIndexes = new HashSet();    
+    private HashSet<String> appendableIndexes = new HashSet();   
+    
 
  
     public Node(NodeBuilder builder){
         
         this.nodeName=builder.getNodeName();
+        this.nodeIndex = builder.getNodeindex();
         this.children = builder.getChildren();
         this.appendableIndexes = builder.getAppendableIndexes();
         this.value = builder.getValue();
@@ -52,6 +55,9 @@ public abstract class Node implements INode{
     
     public INode getParent(){
         return this.parent;
+    }
+    public String getNodexIndex(){
+        return this.nodeIndex;
     }
     
 

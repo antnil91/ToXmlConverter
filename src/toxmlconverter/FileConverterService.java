@@ -50,75 +50,52 @@ public class FileConverterService {
         INode prevNode = parent;
         
         parent.writeOpenNode(bw);
-     
+        
          while (br.ready()) {
-            
+                          
             strLine = br.readLine();  //
             cols = strLine.split("\\" + DELMITTER);  
             nodeIndex = cols[0];  
             children = Arrays.copyOfRange(cols, 1, cols.length);  
             
             
-            if(prevNode.isValidChild(nodeIndex)){
-
-               parent = prevNode;
-               
-            } else {
-
-                parent = prevNode.getParent();
-                
-                while(!parent.isValidChild(nodeIndex)){
-                    
-                    parent = parent.getParent();
-                    
-                }
-                
-                
-                if(parent.getParent()==null){
-                    
-                    parent.writeValue(bw);
-                    parent.writeChildren(bw);
-                    //parent.writeCloseNode(bw);
-                    
-                }
+            //get the parent
+            parent=prevNode;
             
+            while(null!=parent && !parent.isValidChild(nodeIndex)){
+                
+                parent.writeCloseNode(bw);
+                parent=parent.getParent();
+                
             }
             
             
             currNode = NodeFactory.createNode(nodeIndex, children, this.outputFormat, parent);
-
             
-            if(parent.isValidChild(nodeIndex)){
-                
-                parent.appendChild(currNode);
-                
-            } 
+            currNode.writeOpenNode(bw);
+            currNode.writeValue(bw);
+            currNode.writeChildren(bw);
             
-            prevNode = currNode;
+            
+            prevNode=currNode;
+            
             
         }
          
-         
-         while(parent.getParent()!=null){
-             parent = parent.getParent();
-         }
-         
+       prevNode.writeCloseNode(bw);
+       parent = prevNode.getParent();
        
-        parent.writeValue(bw);
-        parent.writeChildren(bw);
-        parent.writeCloseNode(bw);
+       while(parent!=null){
+            parent.writeCloseNode(bw);
+            parent = parent.getParent();
+        }
 
-
-         
-         
         bw.flush();
         
         bw.close();
         br.close();
            
     }
-    
-
-    
+   
 }
 
