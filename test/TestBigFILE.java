@@ -50,9 +50,6 @@ public class TestBigFILE {
             "A|Bodengatan 11| Stockholm | 911 41\n" +
             "UA|Frankrike|Parisgatan24|Paris| 101 00\n" +
             "T|070-09 88 12|00-00000\n");
-
-
-    
         
         }
        

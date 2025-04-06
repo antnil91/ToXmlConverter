@@ -16,6 +16,13 @@ import toxmlconverter.Builders.NodeBuilder;
  */
 public class JsonNode extends Node {
 
+    private boolean isObject = false;
+    private boolean isArray = false;
+    private boolean isChild=false;
+    private boolean isLastChild = false;
+    
+    
+    
     public JsonNode(NodeBuilder builder) {
         super(builder);
     }
@@ -23,12 +30,20 @@ public class JsonNode extends Node {
     @Override
     public void writeOpenNode(BufferedWriter bw) {
         try {
-        
+            
+ 
+            
             if(this.getParent()== null){
                 bw.write("{");
             }
             
             if(this.getValue().equals("")){
+        
+                if(null != this.getParent() && this.getParent().isValidChild("T")){
+                    bw.write(",");
+                } else {
+                    bw.write("{");
+                }
                 
                 if(!this.hasChildren()){
                     bw.write(String.format("\"%s\": [", this.getNodeName()));       
@@ -38,6 +53,8 @@ public class JsonNode extends Node {
                 
         
             } 
+            bw.flush();
+            
             
         } catch (IOException ex) {
            ex.printStackTrace();
@@ -57,9 +74,10 @@ public class JsonNode extends Node {
                 
                if(this.getParent().hasChildren()) {
                   bw.write(",");
+                  
                }
                 
-           
+                bw.flush();
       
             } 
             
@@ -70,7 +88,7 @@ public class JsonNode extends Node {
         }
         
     }
-
+  
     @Override
     public void writeCloseNode(BufferedWriter bw) {
         try {
@@ -78,22 +96,24 @@ public class JsonNode extends Node {
       
             if(this.getParent()== null){
                 bw.write("]");
+                bw.flush();
             }  
             
-
             if(this.getValue().equals("")){
 
                 bw.write("}");
-
+                bw.flush();
             } 
             
         } catch (IOException ex) {
            ex.printStackTrace();
         }
+        
     }
+    
+
      
     
 }
 
-
-//
+ 
